@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="bg" data-theme="light" data-lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Деница Желязкова — UGC Creator</title>
+<meta name="description" content="Деница Желязкова — UGC Creator. Съдържание за брандове: грим, мода, фитнес, планинско бягане, колоездене и заведения.">
+
+<!-- ЗАМЕНИ долните два адреса с истинския адрес на сайта след качване в GitHub Pages -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Деница Желязкова — UGC Creator">
+<meta property="og:description" content="Съдържание за брандове: грим, мода, фитнес, планинско бягане, колоездене и заведения.">
+<meta property="og:image" content="https://ЮЗЕРНЕЙМ.github.io/ИМЕ-НА-РЕПО/denitsa-04.jpg">
+<meta property="og:url" content="https://ЮЗЕРНЕЙМ.github.io/ИМЕ-НА-РЕПО/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%8A%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#16211a;
+    --paper:#eef1e6;
+    --panel:#e2e6d5;
+    --clay:#b9ae8e;
+    --line:rgba(22,33,26,.16);
+    --accent:#c7e63a;
+    --accent-ink:#1c2612;
+    --pop:#ff5a36;
+    --radius:2px;
+    --maxw:1180px;
+    --shadow:0 18px 40px rgba(20,26,16,.14);
+  }
+  html[data-theme="dark"]{
+    --ink:#eef1e6;
+    --paper:#10140d;
+    --panel:#1a2015;
+    --clay:#3c4632;
+    --line:rgba(238,241,230,.16);
+    --accent:#c7e63a;
+    --accent-ink:#10140d;
+    --pop:#ff7a55;
+    --shadow:0 18px 40px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Golos Text', 'Segoe UI', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    transition:background .3s ease, color .3s ease;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Unbounded', sans-serif;
+    font-weight:700;
+    line-height:1.05;
+    margin:0;
+    letter-spacing:-.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  section{padding:96px 24px;}
+  .wrap{max-width:var(--maxw); margin:0 auto;}
+  @media (max-width:720px){ section{padding:64px 20px;} }
+
+  /* ---------- Toolbar ---------- */
+  .toolbar{
+    position:fixed; top:16px; right:16px; z-index:60;
+    display:flex; gap:8px; align-items:center;
+  }
+  .tbtn{
+    width:40px; height:40px; border-radius:999px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-family:'Golos Text',sans-serif; font-weight:600; font-size:13px;
+    box-shadow:var(--shadow);
+  }
+  .tbtn:hover{ background:var(--panel); }
+  .share-wrap{ position:relative; }
+  .share-panel{
+    position:absolute; top:48px; right:0;
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:10px; display:none; flex-direction:column; gap:4px;
+    min-width:200px;
+  }
+  .share-panel.open{ display:flex; }
+  .share-panel button, .share-panel a{
+    display:flex; align-items:center; gap:10px;
+    background:none; border:none; text-align:left;
+    padding:9px 10px; border-radius:2px; cursor:pointer;
+    font-family:'Golos Text',sans-serif; font-size:14px; color:var(--ink);
+  }
+  .share-panel button:hover, .share-panel a:hover{ background:var(--panel); }
+  .share-panel svg{ width:18px; height:18px; flex:none; }
+  .copied-tag{ font-size:12px; color:var(--pop); padding-left:10px; display:none; }
+  .copied-tag.show{ display:block; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px;
+    align-items:center; padding-top:120px; min-height:88vh;
+  }
+  @media (max-width:900px){ .hero{ grid-template-columns:1fr; padding-top:100px; } }
+  .kicker{
+    font-family:'Golos Text',sans-serif; font-weight:600; font-size:15px;
+    color:var(--pop); margin-bottom:18px;
+  }
+  .hero h1{ font-size:clamp(42px, 7vw, 84px); }
+  .hero .tagline{
+    font-size:clamp(17px,2.2vw,22px); max-width:46ch; margin-top:22px; opacity:.85;
+  }
+  .hero .subline{ margin-top:12px; font-size:15px; opacity:.6; }
+  .hero-ctas{ display:flex; gap:12px; margin-top:36px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 22px; border-radius:2px; font-weight:600; font-size:15px;
+    text-decoration:none; cursor:pointer; border:1px solid var(--ink);
+    font-family:'Golos Text',sans-serif;
+  }
+  .btn-solid{ background:var(--ink); color:var(--paper); }
+  .btn-solid:hover{ background:var(--pop); border-color:var(--pop); color:#fff; }
+  .btn-line{ background:transparent; color:var(--ink); }
+  .btn-line:hover{ background:var(--ink); color:var(--paper); }
+
+  .hero-photo{
+    position:relative; aspect-ratio:3/4; overflow:hidden;
+    border-radius:2px; box-shadow:var(--shadow);
+  }
+  .hero-photo img{ width:100%; height:100%; object-fit:cover; }
+  .hero-photo::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 55%, rgba(16,20,13,.55));
+  }
+  .hero-photo-tag{
+    position:absolute; left:16px; bottom:16px; z-index:2;
+    color:#fff; font-size:13px; font-weight:600;
+    background:rgba(16,20,13,.4); padding:6px 12px; border-radius:99px;
+    backdrop-filter:blur(4px);
+  }
+
+  /* niche chips */
+  .chips{ display:flex; flex-wrap:wrap; gap:10px; padding:36px 24px 0; max-width:var(--maxw); margin:0 auto; }
+  .chip{
+    border:1px solid var(--line); padding:9px 16px; border-radius:99px;
+    font-size:14px; font-weight:500;
+  }
+
+  /* ---------- About ---------- */
+  .about{ display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px; align-items:center; }
+  @media (max-width:800px){ .about{ grid-template-columns:1fr; } }
+  .about-photo{ aspect-ratio:3/4; overflow:hidden; border-radius:2px; }
+  .about-photo img{ width:100%; height:100%; object-fit:cover; }
+  .about h2{ font-size:clamp(28px,4vw,40px); margin-bottom:24px; }
+  .about-quote{
+    font-size:clamp(18px,2.4vw,24px); line-height:1.5; font-weight:500;
+  }
+  .about-extra{ margin-top:22px; font-size:16px; line-height:1.6; opacity:.75; max-width:56ch; }
+
+  /* ---------- Sport strip ---------- */
+  .sport{ background:var(--panel); }
+  .sport-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  @media (max-width:800px){ .sport-grid{ grid-template-columns:1fr; } }
+  .sport-photo{ aspect-ratio:4/5; overflow:hidden; border-radius:2px; box-shadow:var(--shadow); }
+  .sport-photo img{ width:100%; height:100%; object-fit:cover; }
+  .sport h2{ font-size:clamp(26px,4vw,38px); margin-bottom:18px; }
+  .sport p{ font-size:16px; line-height:1.65; opacity:.8; max-width:52ch; }
+  .sport-tags{ display:flex; gap:10px; margin-top:22px; flex-wrap:wrap; }
+  .sport-tags span{ font-size:13px; font-weight:600; border-bottom:2px solid var(--pop); padding-bottom:2px; }
+
+  /* ---------- Section headers ---------- */
+  .sec-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:36px; flex-wrap:wrap; }
+  .sec-head h2{ font-size:clamp(28px,4vw,42px); }
+  .sec-head p{ font-size:15px; opacity:.65; max-width:38ch; }
+
+  /* ---------- Gallery ---------- */
+  .filters{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px; }
+  .filter-btn{
+    border:1px solid var(--line); background:transparent; color:var(--ink);
+    padding:9px 16px; border-radius:99px; font-family:'Golos Text',sans-serif;
+    font-size:14px; font-weight:600; cursor:pointer;
+  }
+  .filter-btn.active{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+
+  .grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:14px;
+  }
+  @media (max-width:900px){ .grid{ grid-template-columns:repeat(3,1fr);} }
+  @media (max-width:620px){ .grid{ grid-template-columns:repeat(2,1fr); gap:10px;} }
+  .card{
+    position:relative; aspect-ratio:3/4; overflow:hidden; border-radius:2px;
+    cursor:pointer; background:var(--panel);
+  }
+  .card img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+  .card:hover img{ transform:scale(1.06); }
+  .card-cap{
+    position:absolute; left:0; right:0; bottom:0; padding:12px 12px 10px;
+    background:linear-gradient(180deg, transparent, rgba(10,14,8,.82));
+    color:#fff; font-size:12.5px; font-weight:600; opacity:0; transition:opacity .3s ease;
+  }
+  .card:hover .card-cap{ opacity:1; }
+  .card.hide{ display:none; }
+
+  /* ---------- Reels ---------- */
+  .reels{ background:var(--panel); }
+  .reel-row{
+    display:flex; gap:16px; overflow-x:auto; padding-bottom:12px;
+    scroll-snap-type:x mandatory;
+  }
+  .reel-row::-webkit-scrollbar{ height:6px; }
+  .reel-row::-webkit-scrollbar-thumb{ background:var(--clay); border-radius:99px; }
+  .reel-card{
+    flex:0 0 220px; scroll-snap-align:start; cursor:pointer;
+  }
+  .reel-thumb{
+    position:relative; aspect-ratio:9/16; border-radius:2px; overflow:hidden;
+    box-shadow:var(--shadow); background:#000;
+  }
+  .reel-thumb img{ width:100%; height:100%; object-fit:cover; opacity:.88; }
+  .play-badge{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  }
+  .play-badge span{
+    width:52px; height:52px; border-radius:99px; background:rgba(255,255,255,.92);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .reel-cat{
+    position:absolute; top:10px; left:10px; font-size:11px; font-weight:700;
+    background:var(--accent); color:var(--accent-ink); padding:4px 9px; border-radius:99px;
+  }
+  .reel-cap{ margin-top:10px; font-size:14px; font-weight:600; }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{
+    position:fixed; inset:0; background:rgba(8,10,6,.92); z-index:100;
+    display:none; align-items:center; justify-content:center; padding:24px;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox img, .lightbox video{
+    max-width:min(92vw, 620px); max-height:88vh; border-radius:2px;
+  }
+  .lb-close, .lb-prev, .lb-next{
+    position:absolute; background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.3);
+    border-radius:99px; width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:20px;
+  }
+  .lb-close{ top:22px; right:22px; }
+  .lb-prev{ left:22px; top:50%; transform:translateY(-50%); }
+  .lb-next{ right:22px; top:50%; transform:translateY(-50%); }
+  @media (max-width:640px){ .lb-prev, .lb-next{ display:none; } }
+
+  /* ---------- Contact ---------- */
+  .contact{ text-align:left; }
+  .contact h2{ font-size:clamp(30px,5vw,52px); max-width:16ch; }
+  .contact p{ margin-top:20px; font-size:16px; opacity:.75; max-width:52ch; line-height:1.6; }
+  .contact-grid{ display:flex; gap:48px; margin-top:44px; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; }
+  .contact-links{ display:flex; flex-direction:column; gap:14px; }
+  .contact-links a{
+    font-size:17px; font-weight:600; text-decoration:none;
+    border-bottom:1px solid var(--line); padding-bottom:4px; width:fit-content;
+  }
+  .contact-links a:hover{ border-color:var(--ink); }
+
+  footer{
+    padding:32px 24px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+    font-size:13px; opacity:.6;
+  }
+  .foot-share{ display:flex; gap:10px; }
+  .foot-share button{
+    width:34px; height:34px; border-radius:99px; border:1px solid var(--line);
+    background:transparent; color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .foot-share button:hover{ background:var(--panel); }
+
+  [data-i18n-en]{ }
+</style>
+</head>
+<body>
+
+<!-- ============ TOOLBAR ============ -->
+<div class="toolbar">
+  <button class="tbtn" id="langToggle" aria-label="Смяна на език / Toggle language">BG</button>
+  <button class="tbtn" id="themeToggle" aria-label="Смяна на тема / Toggle theme">
+    <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+  </button>
+  <div class="share-wrap">
+    <button class="tbtn" id="shareToggle" aria-label="Сподели / Share">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"></line></svg>
+    </button>
+    <div class="share-panel" id="sharePanel">
+      <button onclick="shareTo('facebook')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12"/></svg>
+        Facebook
+      </button>
+      <button onclick="shareTo('viber')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.9 2 3 5.4 3 9.9c0 2.5 1.2 4.7 3.2 6.2-.1.9-.5 2.5-.6 3-.1.4.2.4.4.3.4-.2 2.4-1.4 3.3-2 .9.2 1.8.3 2.7.3 5.1 0 9-3.4 9-7.8S17.1 2 12 2m0 13.8c-.8 0-1.6-.1-2.3-.3l-.3-.1-1.9 1.1.3-1.8-.2-.2C6 13.5 5 11.9 5 9.9 5 6.5 8.1 3.9 12 3.9s7 2.6 7 6c0 3.3-3.1 5.9-7 5.9m3.9-4.5c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.4.1-.1.2-.5.6-.6.8-.1.1-.2.1-.4 0-.6-.2-1.2-.6-1.7-1.1-.4-.4-.8-.9-1.1-1.4-.1-.2 0-.3.1-.4l.3-.4c.1-.1.1-.2.2-.3.1-.1 0-.3 0-.4-.1-.1-.4-1-.6-1.4-.1-.3-.3-.3-.4-.3h-.3c-.1 0-.4.1-.5.2-.6.6-.9 1.3-.9 2 0 1.2.9 2.4 1 2.5.1.2 1.7 2.7 4.2 3.6.6.2 1 .3 1.4.4.6.2 1.1.1 1.5.1.5-.1 1.2-.5 1.3-1 .2-.5.2-.9.1-1 0-.2-.2-.2-.4-.3"/></svg>
+        Viber
+      </button>
+      <button onclick="shareTo('whatsapp')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2m0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2m4.5-6.1c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8.9-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.2-.4.1-.1 0-.3 0-.4-.1-.1-.5-1.3-.7-1.7-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.4 3.8 3.4.5.2.9.4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1 0-.2-.2-.2-.4-.3"/></svg>
+        WhatsApp
+      </button>
+      <button onclick="shareTo('telegram')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 4L2.9 11.5c-1.3.5-1.3 1.2-.2 1.6l4.9 1.5 1.9 5.8c.2.6.4.9.9.9.4 0 .6-.2.9-.5l2.2-2.1 4.6 3.4c.8.5 1.4.2 1.6-.8L22.9 4.7c.3-1.3-.4-1.8-1.4-1.3l.5.6z"/></svg>
+        Telegram
+      </button>
+      <button onclick="shareTo('x')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 10.5L21 3h-2l-6.4 6.5L7.4 3H2l7.9 10.6L2.4 21H4.4l6.9-7 5.5 7H22z"/></svg>
+        X / Twitter
+      </button>
+      <button onclick="shareTo('linkedin')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 3H3.6A.6.6 0 0 0 3 3.6v16.8a.6.6 0 0 0 .6.6h16.8a.6.6 0 0 0 .6-.6V3.6a.6.6 0 0 0-.6-.6M8.3 18.5H5.7V9.9h2.6zM7 8.8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m11.5 9.7h-2.6v-4.6c0-1.1 0-2.5-1.5-2.5s-1.8 1.2-1.8 2.4v4.7h-2.6V9.9h2.5v1.2c.4-.7 1.3-1.4 2.6-1.4 2.8 0 3.4 1.9 3.4 4.3z"/></svg>
+        LinkedIn
+      </button>
+      <button onclick="copyLink()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span data-bg="Копирай линк" data-en="Copy link">Копирай линк</span>
+      </button>
+      <div class="copied-tag" id="copiedTag" data-bg="Линкът е копиран ✓" data-en="Link copied ✓">Линкът е копиран ✓</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero wrap">
+  <div>
+    <div class="kicker" data-bg="UGC CREATOR · СЪДЪРЖАНИЕ ЗА БРАНДОВЕ" data-en="UGC CREATOR · CONTENT FOR BRANDS">UGC CREATOR · СЪДЪРЖАНИЕ ЗА БРАНДОВЕ</div>
+    <h1 data-bg="Деница<br>Желязкова" data-en="Denitsa<br>Zhelyazkova">Деница<br>Желязкова</h1>
+    <p class="tagline" data-bg="Автентично видео и снимки за брандове от храна, добавки, спорт и лайфстайл — с грим, мода и енергия от планинските пътеки." data-en="Authentic photo and video for food, supplement, sport and lifestyle brands — with makeup, fashion and energy straight from the trails.">Автентично видео и снимки за брандове от храна, добавки, спорт и лайфстайл — с грим, мода и енергия от планинските пътеки.</p>
+    <p class="subline" data-bg="6 години създавам съдържание за Instagram и TikTok" data-en="6 years creating content for Instagram and TikTok">6 години създавам съдържание за Instagram и TikTok</p>
+    <div class="hero-ctas">
+      <a class="btn btn-solid" href="mailto:deni_nz01@abv.bg" data-bg="Да работим заедно" data-en="Let's work together">Да работим заедно</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="denitsa-04.jpg" alt="Деница Желязкова">
+    <div class="hero-photo-tag" data-bg="Кафе &amp; гофрета — брандирано съдържание" data-en="Coffee &amp; waffle — branded content">Кафе &amp; гофрета — брандирано съдържание</div>
+  </div>
+</section>
+
+<div class="chips">
+  <span class="chip" data-bg="Красота" data-en="Beauty">Красота</span>
+  <span class="chip" data-bg="Мода" data-en="Fashion">Мода</span>
+  <span class="chip" data-bg="Фитнес" data-en="Fitness">Фитнес</span>
+  <span class="chip" data-bg="Планинско бягане" data-en="Trail running">Планинско бягане</span>
+  <span class="chip" data-bg="Колоездене" data-en="Cycling">Колоездене</span>
+  <span class="chip" data-bg="Храна &amp; заведения" data-en="Food &amp; dining">Храна &amp; заведения</span>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="wrap about">
+  <div class="about-photo">
+    <img src="denitsa-09.jpg" alt="Деница Желязкова">
+  </div>
+  <div>
+    <h2 data-bg="Коя съм аз" data-en="About me">Коя съм аз</h2>
+    <p class="about-quote" data-bg="„Привет! Занимавам се с грим, мода, тренировки и фотография, а вече 6 години създавам рекламно съдържание за брандове, места и услуги в Instagram и TikTok.“" data-en="“Hi! I work with makeup, fashion, training and photography, and for 6 years I've been creating branded content for brands, venues and services on Instagram and TikTok.”">„Привет! Занимавам се с грим, мода, тренировки и фотография, а вече 6 години създавам рекламно съдържание за брандове, места и услуги в Instagram и TikTok.“</p>
+    <p class="about-extra" data-bg="Извън работата по-голямата част от свободното ми време минава по планински пътеки за бягане или на колело — оттам идва и голяма част от енергията в съдържанието ми." data-en="Outside of work, most of my free time goes into trail running or cycling — that's where a lot of the energy in my content comes from.">Извън работата по-голямата част от свободното ми време минава по планински пътеки за бягане или на колело — оттам идва и голяма част от енергията в съдържанието ми.</p>
+  </div>
+</section>
+
+<!-- ============ SPORT STRIP ============ -->
+<section class="sport">
+  <div class="wrap sport-grid">
+    <div class="sport-photo">
+      <img src="denitsa-05.jpg" alt="Спорт и състезания">
+    </div>
+    <div>
+      <h2 data-bg="Спорт в кадър" data-en="Sport on camera">Спорт в кадър</h2>
+      <p data-bg="Медали от маратони, стартови номера по стената и делнична тренировка на паркова спортна площадка — издръжливостта е естествена част от съдържанието ми, не просто поза за камерата." data-en="Marathon medals, race bibs on the wall, a weekday session at the outdoor gym — endurance is a natural part of my content, not just a pose for the camera.">Медали от маратони, стартови номера по стената и делнична тренировка на паркова спортна площадка — издръжливостта е естествена част от съдържанието ми, не просто поза за камерата.</p>
+      <div class="sport-tags">
+        <span data-bg="Маратони" data-en="Marathons">Маратони</span>
+        <span data-bg="Планинско бягане" data-en="Trail running">Планинско бягане</span>
+        <span data-bg="Колоездене" data-en="Cycling">Колоездене</span>
+        <span data-bg="Спортно хранене" data-en="Sports nutrition">Спортно хранене</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="wrap" id="gallery">
+  <div class="sec-head">
+    <h2 data-bg="Работа с брандове" data-en="Brand collaborations">Работа с брандове</h2>
+    <p data-bg="Избрани кадри от кампании за хранене, добавки и заведения." data-en="Selected shots from campaigns for nutrition, supplements and restaurants.">Избрани кадри от кампании за хранене, добавки и заведения.</p>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all" data-bg="Всички" data-en="All">Всички</button>
+    <button class="filter-btn" data-filter="nutrition" data-bg="Хранене и добавки" data-en="Nutrition &amp; supplements">Хранене и добавки</button>
+    <button class="filter-btn" data-filter="food" data-bg="Заведения" data-en="Dining">Заведения</button>
+    <button class="filter-btn" data-filter="lifestyle" data-bg="Лайфстайл" data-en="Lifestyle">Лайфстайл</button>
+  </div>
+
+  <div class="grid" id="galleryGrid">
+    <!-- items injected via data below, but written statically for reliability -->
+  </div>
+</section>
+
+<!-- ============ REELS ============ -->
+<section class="reels">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-bg="Видео съдържание" data-en="Video content">Видео съдържание</h2>
+      <p data-bg="Кратки клипове за ревюта, тренировки и промоции на локации." data-en="Short clips for reviews, workouts and venue promos.">Кратки клипове за ревюта, тренировки и промоции на локации.</p>
+    </div>
+    <div class="reel-row" id="reelRow"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="wrap contact">
+  <h2 data-bg="Да си партнираме" data-en="Let's partner up">Да си партнираме</h2>
+  <p data-bg="Отворена съм за колаборации с брандове от храна, добавки, спорт и лайфстайл. Пишете ми директно — в имейл, Instagram или TikTok." data-en="Open for collaborations with food, supplement, sport and lifestyle brands. Reach out directly — by email, Instagram or TikTok.">Отворена съм за колаборации с брандове от храна, добавки, спорт и лайфстайл. Пишете ми директно — в имейл, Instagram или TikTok.</p>
+  <div class="contact-grid">
+    <div class="contact-links">
+      <a href="mailto:deni_nz01@abv.bg">deni_nz01@abv.bg</a>
+      <a href="https://www.instagram.com/deninz170/" target="_blank" rel="noopener">Instagram — @deninz170</a>
+      <a href="https://www.facebook.com/profile.php?id=61593985012764" target="_blank" rel="noopener">Facebook — Деница Желязкова</a>
+    </div>
+    <a class="btn btn-solid" href="mailto:deni_nz01@abv.bg" data-bg="Изпрати имейл" data-en="Send an email">Изпрати имейл</a>
+  </div>
+</section>
+
+<footer>
+  <span data-bg="© 2026 Деница Желязкова" data-en="© 2026 Denitsa Zhelyazkova">© 2026 Деница Желязкова</span>
+  <div class="foot-share">
+    <button onclick="shareTo('facebook')" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12"/></svg></button>
+    <button onclick="shareTo('whatsapp')" aria-label="WhatsApp"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2m0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg></button>
+    <button onclick="copyLink()" aria-label="Copy link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <button class="lb-prev" id="lbPrev">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-next" id="lbNext">›</button>
+</div>
+
+<div class="lightbox" id="videoBox">
+  <button class="lb-close" id="vbClose">✕</button>
+  <video id="vbVideo" src="" controls autoplay playsinline></video>
+</div>
+
+<script>
+/* ---------------- DATA ---------------- */
+const photos = [
+  {src:"denitsa-01.jpg", cat:"lifestyle", bg:"Кутия с изненади",              en:"Surprise gift box"},
+  {src:"denitsa-02.jpg", cat:"nutrition", bg:"VikiNuts — веган протеин",       en:"VikiNuts — vegan protein"},
+  {src:"denitsa-03.jpg", cat:"nutrition", bg:"OstroVit &amp; Dymatize ISO100", en:"OstroVit &amp; Dymatize ISO100"},
+  {src:"denitsa-04.jpg", cat:"food",      bg:"Белгийска гофрета &amp; кафе",   en:"Belgian waffle &amp; coffee"},
+  {src:"denitsa-05.jpg", cat:"nutrition", bg:"Giveaway на стадиона — 7Fit",    en:"Stadium giveaway — 7Fit"},
+  {src:"denitsa-06.jpg", cat:"nutrition", bg:"Applied Nutrition Endurance",    en:"Applied Nutrition Endurance"},
+  {src:"denitsa-07.jpg", cat:"food",      bg:"Bubble House гофрети",           en:"Bubble House waffles"},
+  {src:"denitsa-08.jpg", cat:"food",      bg:"Суши вечер",                     en:"Sushi night"},
+  {src:"denitsa-09.jpg", cat:"nutrition", bg:"Тахан от тигрови ядки",          en:"Tiger nut tahini"},
+  {src:"denitsa-10.jpg", cat:"food",      bg:"Skapto — честни бургери",        en:"Skapto — honest burgers"},
+  {src:"denitsa-11.jpg", cat:"food",      bg:"Бургер с изглед",                en:"Burger with a view"},
+  {src:"denitsa-12.jpg", cat:"food",      bg:"Поке купа &amp; Aperol Spritz",  en:"Poke bowl &amp; Aperol Spritz"},
+];
+
+const videos = [
+  {src:"denitsa-video-01.mp4", poster:"denitsa-video-01-poster.jpg", cat_bg:"Заведение", cat_en:"Venue promo", bg:"Промо на заведение",     en:"Restaurant promo"},
+  {src:"denitsa-video-02.mp4", poster:"denitsa-video-02-poster.jpg", cat_bg:"Фитнес",    cat_en:"Fitness",     bg:"Тренировка на открито",  en:"Outdoor workout"},
+  {src:"denitsa-video-03.mp4", poster:"denitsa-video-03-poster.jpg", cat_bg:"Фитнес",    cat_en:"Fitness",     bg:"Домашна тренировка",     en:"Home workout"},
+  {src:"denitsa-video-04.mp4", poster:"denitsa-video-04-poster.jpg", cat_bg:"Заведение", cat_en:"Venue promo", bg:"Caramello Bar &amp; Dinner", en:"Caramello Bar &amp; Dinner"},
+  {src:"denitsa-video-05.mp4", poster:"denitsa-video-05-poster.jpg", cat_bg:"Unboxing",  cat_en:"Unboxing",    bg:"Разопаковане на пратка", en:"Unboxing a package"},
+  {src:"denitsa-video-06.mp4", poster:"denitsa-video-06-poster.jpg", cat_bg:"Бюти ревю", cat_en:"Beauty review", bg:"SOS Care — ревю на продукт", en:"SOS Care — product review"},
+];
+
+/* ---------------- RENDER GALLERY ---------------- */
+const galleryGrid = document.getElementById('galleryGrid');
+photos.forEach((p, i) => {
+  const div = document.createElement('div');
+  div.className = 'card';
+  div.dataset.cat = p.cat;
+  div.dataset.index = i;
+  div.innerHTML = `<img src="${p.src}" alt="${p.bg}" loading="lazy">
+    <div class="card-cap" data-bg="${p.bg}" data-en="${p.en}">${p.bg}</div>`;
+  div.addEventListener('click', () => openLightbox(i));
+  galleryGrid.appendChild(div);
+});
+
+/* ---------------- RENDER REELS ---------------- */
+const reelRow = document.getElementById('reelRow');
+videos.forEach((v, i) => {
+  const div = document.createElement('div');
+  div.className = 'reel-card';
+  div.innerHTML = `
+    <div class="reel-thumb">
+      <span class="reel-cat" data-bg="${v.cat_bg}" data-en="${v.cat_en}">${v.cat_bg}</span>
+      <img src="${v.poster}" alt="${v.bg}" loading="lazy">
+      <div class="play-badge"><span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#16211a"><path d="M8 5v14l11-7z"/></svg>
+      </span></div>
+    </div>
+    <div class="reel-cap" data-bg="${v.bg}" data-en="${v.en}">${v.bg}</div>`;
+  div.addEventListener('click', () => openVideo(v.src));
+  reelRow.appendChild(div);
+});
+
+/* ---------------- GALLERY FILTER ---------------- */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('#galleryGrid .card').forEach(card => {
+      card.classList.toggle('hide', f !== 'all' && card.dataset.cat !== f);
+    });
+  });
+});
+
+/* ---------------- LIGHTBOX (photos) ---------------- */
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+let lbIndex = 0;
+function openLightbox(i){
+  lbIndex = i;
+  lbImg.src = photos[i].src;
+  lbImg.alt = photos[i].bg;
+  lightbox.classList.add('open');
+}
+function closeLightbox(){ lightbox.classList.remove('open'); }
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', () => { lbIndex = (lbIndex - 1 + photos.length) % photos.length; lbImg.src = photos[lbIndex].src; });
+document.getElementById('lbNext').addEventListener('click', () => { lbIndex = (lbIndex + 1) % photos.length; lbImg.src = photos[lbIndex].src; });
+lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+
+/* ---------------- VIDEO MODAL ---------------- */
+const videoBox = document.getElementById('videoBox');
+const vbVideo = document.getElementById('vbVideo');
+function openVideo(src){
+  vbVideo.src = src;
+  videoBox.classList.add('open');
+  vbVideo.play().catch(()=>{});
+}
+function closeVideo(){ videoBox.classList.remove('open'); vbVideo.pause(); vbVideo.src=''; }
+document.getElementById('vbClose').addEventListener('click', closeVideo);
+videoBox.addEventListener('click', (e) => { if(e.target === videoBox) closeVideo(); });
+
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape'){ closeLightbox(); closeVideo(); }
+});
+
+/* ---------------- THEME ---------------- */
+const root = document.documentElement;
+function setTheme(t){
+  root.setAttribute('data-theme', t);
+  localStorage.setItem('denitsa-theme', t);
+}
+document.getElementById('themeToggle').addEventListener('click', () => {
+  setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+try{
+  const savedTheme = localStorage.getItem('denitsa-theme');
+  if(savedTheme) setTheme(savedTheme);
+  else if(window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
+}catch(e){}
+
+/* ---------------- LANGUAGE ---------------- */
+function setLang(lang){
+  root.setAttribute('data-lang', lang);
+  document.getElementById('langToggle').textContent = lang === 'bg' ? 'BG' : 'EN';
+  document.querySelectorAll('[data-bg]').forEach(el => {
+    el.innerHTML = lang === 'bg' ? el.dataset.bg : el.dataset.en;
+  });
+  try{ localStorage.setItem('denitsa-lang', lang); }catch(e){}
+}
+document.getElementById('langToggle').addEventListener('click', () => {
+  setLang(root.getAttribute('data-lang') === 'bg' ? 'en' : 'bg');
+});
+try{
+  const savedLang = localStorage.getItem('denitsa-lang');
+  if(savedLang) setLang(savedLang);
+}catch(e){}
+
+/* ---------------- SHARE ---------------- */
+const sharePanel = document.getElementById('sharePanel');
+document.getElementById('shareToggle').addEventListener('click', (e) => {
+  e.stopPropagation();
+  sharePanel.classList.toggle('open');
+});
+document.addEventListener('click', (e) => {
+  if(!sharePanel.contains(e.target) && e.target.id !== 'shareToggle'){
+    sharePanel.classList.remove('open');
+  }
+});
+function shareTo(network){
+  const url = encodeURIComponent(window.location.href);
+  const text = encodeURIComponent('Деница Желязкова — UGC Creator');
+  const map = {
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+    viber: `viber://forward?text=${text}%20${url}`,
+    whatsapp: `https://wa.me/?text=${text}%20${url}`,
+    telegram: `https://t.me/share/url?url=${url}&text=${text}`,
+    x: `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+  };
+  window.open(map[network], '_blank', 'noopener,width=600,height=500');
+}
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const tag = document.getElementById('copiedTag');
+    tag.classList.add('show');
+    setTimeout(() => tag.classList.remove('show'), 2000);
+  });
+}
+</script>
+</body>
+</html>
